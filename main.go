@@ -11,6 +11,7 @@ import (
 	"strconv"
 
 	"github.com/clintongilders/go-api-client/models"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -57,6 +58,13 @@ func InitDB() *gorm.DB {
 	db.AutoMigrate(&models.Region{}, &models.PokemonSpecies{})
 	println("Database Migrated")
 	return db
+}
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 }
 
 func main() {

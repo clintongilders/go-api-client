@@ -47,7 +47,7 @@ type PokemonSpecies struct {
 }
 
 func InitDB() *gorm.DB {
-	db, err := gorm.Open(sqlite.Open("test.db?_foreign_keys=on"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("/tmp/test.db?_foreign_keys=on"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	} else {
